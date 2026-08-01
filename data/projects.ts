@@ -11,6 +11,7 @@ export interface Project {
   hasGallery?: boolean;
   github?: string | null;
   demo?: string | null;
+  liveUrl?: string;
 }
 
 export const projects: Project[] = [
@@ -51,6 +52,7 @@ export const projects: Project[] = [
     hasGallery: true,
     github: null,
     demo: null,
+    liveUrl: "https://officeline.vercel.app/ar",
   },
   {
     slug: "school-management-system",
@@ -117,6 +119,7 @@ export const projects: Project[] = [
     hasGallery: true,
     github: null,
     demo: null,
+    liveUrl: "https://solution.com.sa/ar",
   },
 ];
 

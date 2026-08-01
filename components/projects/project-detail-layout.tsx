@@ -1,6 +1,7 @@
 import { Check, GitBranch, Code2, ExternalLink, LayoutTemplate } from "lucide-react";
 import { Project } from "@/data/projects";
 import { ImagePlaceholder } from "@/components/shared/image-placeholder";
+import { LiveSitePreview } from "@/components/projects/live-site-preview";
 import { TechTag } from "@/components/shared/tech-tag";
 import { Reveal } from "@/components/shared/reveal";
 import { Button } from "@/components/ui/button";
@@ -56,11 +57,15 @@ export function ProjectDetailLayout({ project }: { project: Project }) {
       </Reveal>
 
       <Reveal delay={0.1} className="mt-10">
-        <ImagePlaceholder
-          label={`${project.title} — hero image`}
-          icon={LayoutTemplate}
-          aspectRatio="aspect-[16/9]"
-        />
+        {project.liveUrl ? (
+          <LiveSitePreview liveUrl={project.liveUrl} title={project.title} />
+        ) : (
+          <ImagePlaceholder
+            label={`${project.title} — hero image`}
+            icon={LayoutTemplate}
+            aspectRatio="aspect-[16/9]"
+          />
+        )}
       </Reveal>
 
       <Reveal delay={0.15} className="mt-12">
