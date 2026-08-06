@@ -1,0 +1,108 @@
+import type { Localized } from "@/lib/i18n";
+
+export const dict = {
+  nav: {
+    home: { en: "Home", ar: "الرئيسية" },
+    projects: { en: "Projects", ar: "المشاريع" },
+    aiLab: { en: "AI Lab", ar: "مختبر الذكاء الاصطناعي" },
+    resume: { en: "Resume", ar: "السيرة الذاتية" },
+    contact: { en: "Contact", ar: "تواصل معي" },
+    downloadCv: { en: "Download CV", ar: "تحميل السيرة الذاتية" },
+    openMenu: { en: "Open menu", ar: "فتح القائمة" },
+  },
+  common: {
+    viewProject: { en: "View Project", ar: "عرض المشروع" },
+    viewAllProjects: { en: "View All Projects", ar: "عرض جميع المشاريع" },
+    exploreAiLab: { en: "Explore AI Lab", ar: "استكشف مختبر الذكاء الاصطناعي" },
+    openLiveSite: { en: "Open Live Site ↗", ar: "زيارة الموقع المباشر ↖" },
+    openLiveSiteShort: { en: "Open Live Site", ar: "زيارة الموقع المباشر" },
+    liveSiteUnavailable: { en: "Live preview unavailable", ar: "المعاينة المباشرة غير متاحة" },
+    loadingPreview: { en: "Loading preview…", ar: "جاري تحميل المعاينة…" },
+    overview: { en: "Overview", ar: "نظرة عامة" },
+    keyFeatures: { en: "Key Features", ar: "أبرز المزايا" },
+    techStack: { en: "Technology / Stack", ar: "التقنيات المستخدمة" },
+    architecture: { en: "Architecture", ar: "البنية التقنية" },
+    architectureComingSoon: {
+      en: "Architecture diagram — coming soon",
+      ar: "مخطط البنية التقنية — قريبًا",
+    },
+    projectGallery: { en: "Project Gallery", ar: "معرض الصور" },
+    screenshotComingSoon: { en: "Screenshot — coming soon", ar: "لقطة شاشة — قريبًا" },
+    heroImageComingSoon: { en: "hero image", ar: "الصورة الرئيسية" },
+    howItWorks: { en: "How It Works", ar: "كيف يعمل" },
+    agentWorkflow: { en: "Agent Workflow", ar: "مخطط سير العمل" },
+    reportOutput: { en: "Report Output", ar: "مخرجات التقرير" },
+    sampleReport: { en: "Sample Report", ar: "نموذج تقرير" },
+    sampleReportComingSoon: { en: "Sample report — coming soon", ar: "نموذج التقرير — قريبًا" },
+    screenshots: { en: "Screenshots", ar: "لقطات الشاشة" },
+    problem: { en: "Problem", ar: "المشكلة" },
+    solution: { en: "Solution", ar: "الحل" },
+    allocationFactors: { en: "Allocation Factors", ar: "عوامل التوزيع" },
+    allocationWorkflow: { en: "Allocation Workflow", ar: "سير عمل التوزيع" },
+  },
+  home: {
+    viewProjects: { en: "View Projects", ar: "عرض المشاريع" },
+    exploreAiLab: { en: "Explore AI Lab", ar: "استكشف مختبر الذكاء الاصطناعي" },
+    downloadResume: { en: "Download Resume", ar: "تحميل السيرة الذاتية" },
+    profilePhotoComingSoon: { en: "Profile photo — coming soon", ar: "الصورة الشخصية — قريبًا" },
+    selectedWork: { en: "Selected Work", ar: "أعمال مختارة" },
+    selectedWorkSubtitle: {
+      en: "A selection of projects I've built across full-stack development and intelligent software.",
+      ar: "مجموعة من المشاريع التي طوّرتها في تطوير البرمجيات وبناء الحلول الذكية.",
+    },
+    aiLabTitle: { en: "AI Lab", ar: "مختبر الذكاء الاصطناعي" },
+    aiLabSubtitle: {
+      en: "AI agents and intelligent tools built to solve practical problems.",
+      ar: "وكلاء وأدوات ذكاء اصطناعي مبنية لحل مشكلات عملية.",
+    },
+    certifications: { en: "Certifications", ar: "الشهادات" },
+    ctaTitle: { en: "Have an idea? Let's build it.", ar: "عندك فكرة؟ خلّنا نبنيها." },
+    ctaText: {
+      en: "I enjoy working on ideas that can turn into something real and useful. Whether you have a project, an idea, or a problem that needs solving, I'd love to hear about it.",
+      ar: "أحب أشتغل على الأفكار اللي ممكن تتحول إلى شيء حقيقي ومفيد. إذا عندك مشروع، فكرة، أو حتى مشكلة تحتاج حل، يسعدني نتكلم عنها.",
+    },
+    getInTouch: { en: "Get in Touch", ar: "تواصل معي" },
+  },
+  projectsPage: {
+    title: { en: "Projects", ar: "المشاريع" },
+    subtitle: {
+      en: "A closer look at the applications and systems I've built.",
+      ar: "نظرة أقرب على التطبيقات والأنظمة التي طوّرتها.",
+    },
+  },
+  aiLabPage: {
+    title: { en: "AI Lab", ar: "مختبر الذكاء الاصطناعي" },
+    subtitle: {
+      en: "Experiments and practical AI systems built around agents, automation, and intelligent tools.",
+      ar: "تجارب وأنظمة ذكاء اصطناعي عملية مبنية على الوكلاء والأتمتة والأدوات الذكية.",
+    },
+  },
+  resumePage: {
+    title: { en: "Resume", ar: "السيرة الذاتية" },
+    cvAvailableSoon: { en: "CV Available Soon", ar: "السيرة الذاتية متاحة قريبًا" },
+    downloadCv: { en: "Download CV", ar: "تحميل السيرة الذاتية" },
+    professionalSummary: { en: "Professional Summary", ar: "نبذة مهنية" },
+    summaryText: {
+      en: "Full Stack Developer and AI Agent Engineer focused on building modern web applications, intelligent AI agents, and practical automation tools. I enjoy combining software engineering with AI to create systems that solve real business problems.",
+      ar: "مطوّرة Full Stack ومهندسة وكلاء ذكاء اصطناعي، أركّز على بناء تطبيقات ويب حديثة ووكلاء ذكاء اصطناعي وأدوات أتمتة عملية. أستمتع بدمج هندسة البرمجيات مع الذكاء الاصطناعي لبناء أنظمة تحل مشكلات أعمال حقيقية.",
+    },
+    coreAreas: { en: "Core Areas", ar: "مجالات الخبرة" },
+    languages: { en: "Languages", ar: "اللغات" },
+  },
+  contactPage: {
+    title: { en: "Let's Connect", ar: "لنتواصل" },
+    text: {
+      en: "Have a project, opportunity, or interesting idea? Feel free to reach out.",
+      ar: "هل لديك مشروع أو فرصة أو فكرة تقنية؟ يسعدني التواصل.",
+    },
+    copyEmail: { en: "Copy Email", ar: "نسخ البريد الإلكتروني" },
+    emailCopied: { en: "Email Copied", ar: "تم نسخ البريد" },
+    copyPhone: { en: "Copy Phone", ar: "نسخ رقم الجوال" },
+    phoneCopied: { en: "Phone Copied", ar: "تم نسخ الرقم" },
+    linkedin: { en: "LinkedIn", ar: "LinkedIn" },
+  },
+  footer: {
+    rights: { en: "All rights reserved.", ar: "جميع الحقوق محفوظة." },
+    linkedin: { en: "LinkedIn", ar: "LinkedIn" },
+  },
+} satisfies Record<string, Record<string, Localized<string>>>;

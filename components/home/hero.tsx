@@ -2,12 +2,17 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, User } from "lucide-react";
+import { ArrowRight, ArrowLeft, User } from "lucide-react";
 import { siteConfig } from "@/data/site-config";
+import { dict } from "@/data/dictionary";
+import { useLocale } from "@/components/providers/locale-provider";
 import { Button } from "@/components/ui/button";
 import { ImagePlaceholder } from "@/components/shared/image-placeholder";
 
 export function Hero() {
+  const { locale, dir } = useLocale();
+  const ForwardArrow = dir === "rtl" ? ArrowLeft : ArrowRight;
+
   return (
     <section className="mx-auto max-w-6xl px-6 pb-20 pt-16 sm:pt-24">
       <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-16">
@@ -18,16 +23,16 @@ export function Hero() {
           className="flex flex-col gap-6"
         >
           <div className="flex flex-col gap-1">
-            <span className="text-lg font-semibold text-foreground">{siteConfig.name}</span>
-            <span className="text-sm font-medium text-muted-foreground">{siteConfig.title}</span>
+            <span className="text-lg font-semibold text-foreground">{siteConfig.name[locale]}</span>
+            <span className="text-sm font-medium text-muted-foreground">{siteConfig.title[locale]}</span>
           </div>
 
           <h1 className="whitespace-pre-line text-4xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            {siteConfig.tagline}
+            {siteConfig.tagline[locale]}
           </h1>
 
           <p className="max-w-xl text-lg text-muted-foreground">
-            {siteConfig.heroSupporting}
+            {siteConfig.heroSupporting[locale]}
           </p>
 
           <div className="flex flex-wrap gap-3 pt-2">
@@ -37,14 +42,14 @@ export function Hero() {
               nativeButton={false}
               render={<Link href="/projects" />}
             >
-              View Projects
-              <ArrowRight className="size-4" />
+              {dict.home.viewProjects[locale]}
+              <ForwardArrow className="size-4" />
             </Button>
             <Button size="lg" variant="outline" className="rounded-full" nativeButton={false} render={<Link href="/ai-lab" />}>
-              Explore AI Lab
+              {dict.home.exploreAiLab[locale]}
             </Button>
             <Button size="lg" variant="ghost" className="rounded-full" nativeButton={false} render={<Link href="/resume" />}>
-              Download Resume
+              {dict.home.downloadResume[locale]}
             </Button>
           </div>
         </motion.div>
@@ -55,10 +60,10 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
         >
           <ImagePlaceholder
-            label="Profile photo — coming soon"
+            label={dict.home.profilePhotoComingSoon[locale]}
             icon={User}
             aspectRatio="aspect-square"
-            className="max-w-sm lg:ml-auto"
+            className="max-w-sm lg:ms-auto"
           />
         </motion.div>
       </div>

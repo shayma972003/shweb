@@ -99,6 +99,9 @@
   html {
     @apply font-sans scroll-smooth;
   }
+  [dir="rtl"] {
+    font-family: var(--font-arabic), var(--font-sans), sans-serif;
+  }
 }
 
 @layer utilities {

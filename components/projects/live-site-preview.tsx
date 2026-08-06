@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ExternalLink, Globe } from "lucide-react";
+import { dict } from "@/data/dictionary";
+import { useLocale } from "@/components/providers/locale-provider";
 import { Button } from "@/components/ui/button";
 
 interface LiveSitePreviewProps {
@@ -23,6 +25,8 @@ function getDisplayUrl(liveUrl: string) {
 }
 
 export function LiveSitePreview({ liveUrl, title }: LiveSitePreviewProps) {
+  const { locale } = useLocale();
+  const t = dict.common;
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [status, setStatus] = useState<Status>("loading");
   const displayUrl = getDisplayUrl(liveUrl);
@@ -60,7 +64,7 @@ export function LiveSitePreview({ liveUrl, title }: LiveSitePreviewProps) {
           nativeButton={false}
           render={<a href={liveUrl} target="_blank" rel="noopener noreferrer" />}
         >
-          Open Live Site ↗
+          {t.openLiveSite[locale]}
         </Button>
       </div>
 
@@ -72,7 +76,10 @@ export function LiveSitePreview({ liveUrl, title }: LiveSitePreviewProps) {
             <span className="size-2.5 rounded-full bg-[#28c840]" />
           </div>
           <div className="flex flex-1 justify-center overflow-hidden">
-            <span className="max-w-[80%] truncate rounded-md bg-background px-3 py-1 text-xs text-muted-foreground">
+            <span
+              dir="ltr"
+              className="max-w-[80%] truncate rounded-md bg-background px-3 py-1 text-xs text-muted-foreground"
+            >
               {displayUrl}
             </span>
           </div>
@@ -83,7 +90,7 @@ export function LiveSitePreview({ liveUrl, title }: LiveSitePreviewProps) {
             <iframe
               ref={iframeRef}
               src={liveUrl}
-              title={`${title} — live preview`}
+              title={title}
               className="size-full border-0"
               loading="lazy"
               referrerPolicy="no-referrer"
@@ -97,7 +104,7 @@ export function LiveSitePreview({ liveUrl, title }: LiveSitePreviewProps) {
             <div className="absolute inset-0 flex items-center justify-center bg-card">
               <div className="flex flex-col items-center gap-3 text-muted-foreground">
                 <div className="size-8 animate-spin rounded-full border-2 border-border border-t-indigo" />
-                <span className="text-sm">Loading preview…</span>
+                <span className="text-sm">{t.loadingPreview[locale]}</span>
               </div>
             </div>
           )}
@@ -108,7 +115,7 @@ export function LiveSitePreview({ liveUrl, title }: LiveSitePreviewProps) {
                 <Globe className="size-5 text-indigo" strokeWidth={1.5} aria-hidden="true" />
               </div>
               <p className="text-sm font-medium text-muted-foreground">
-                Live preview unavailable
+                {t.liveSiteUnavailable[locale]}
               </p>
               <Button
                 size="sm"
@@ -117,7 +124,7 @@ export function LiveSitePreview({ liveUrl, title }: LiveSitePreviewProps) {
                 render={<a href={liveUrl} target="_blank" rel="noopener noreferrer" />}
               >
                 <ExternalLink className="size-4" />
-                Open Live Site
+                {t.openLiveSiteShort[locale]}
               </Button>
             </div>
           )}

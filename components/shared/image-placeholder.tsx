@@ -17,7 +17,7 @@ export function ImagePlaceholder({
   return (
     <div
       role="img"
-      aria-label={`${label} — image coming soon`}
+      aria-label={label}
       className={cn(
         "relative flex w-full flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-navy/[0.06] via-indigo/[0.06] to-violet/[0.08] text-center",
         aspectRatio,

@@ -16,8 +16,8 @@ export async function generateMetadata({
   const project = getAiProjectBySlug(slug);
   if (!project) return {};
   return {
-    title: project.title,
-    description: project.shortDescription,
+    title: project.title.en,
+    description: project.shortDescription.en,
   };
 }
 

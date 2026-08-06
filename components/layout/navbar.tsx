@@ -5,6 +5,9 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu } from "lucide-react";
 import { siteConfig } from "@/data/site-config";
+import { dict } from "@/data/dictionary";
+import { useLocale } from "@/components/providers/locale-provider";
+import { LanguageSwitcher } from "@/components/shared/language-switcher";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -18,6 +21,7 @@ import { cn } from "@/lib/utils";
 
 export function Navbar() {
   const pathname = usePathname();
+  const { locale } = useLocale();
   const [open, setOpen] = useState(false);
 
   return (
@@ -28,9 +32,9 @@ export function Navbar() {
       >
         <Link
           href="/"
-          className="text-base font-semibold tracking-tight text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
+          className="text-lg font-semibold tracking-tight text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
         >
-          {siteConfig.name}
+          {siteConfig.name[locale]}
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
@@ -46,64 +50,72 @@ export function Navbar() {
                   active && "text-foreground"
                 )}
               >
-                {item.label}
+                {dict.nav[item.key][locale]}
               </Link>
             );
           })}
         </div>
 
-        <div className="hidden md:block">
+        <div className="hidden items-center gap-3 md:flex">
+          <LanguageSwitcher />
           <Button
             size="sm"
             className="rounded-full bg-navy text-navy-foreground hover:bg-navy/90"
             nativeButton={false}
             render={<Link href="/resume" />}
           >
-            Download CV
+            {dict.nav.downloadCv[locale]}
           </Button>
         </div>
 
-        <Sheet open={open} onOpenChange={setOpen}>
-          <SheetTrigger
-            render={
-              <Button variant="ghost" size="icon" className="md:hidden" aria-label="Open menu" />
-            }
-          >
-            <Menu className="size-5" />
-          </SheetTrigger>
-          <SheetContent side="right" className="w-72">
-            <SheetHeader>
-              <SheetTitle>{siteConfig.name}</SheetTitle>
-            </SheetHeader>
-            <div className="flex flex-col gap-1 px-4 pb-6">
-              {siteConfig.nav.map((item) => (
+        <div className="flex items-center gap-2 md:hidden">
+          <LanguageSwitcher />
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger
+              render={
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  aria-label={dict.nav.openMenu[locale]}
+                />
+              }
+            >
+              <Menu className="size-5" />
+            </SheetTrigger>
+            <SheetContent side="right" className="w-72">
+              <SheetHeader>
+                <SheetTitle>{siteConfig.name[locale]}</SheetTitle>
+              </SheetHeader>
+              <div className="flex flex-col gap-1 px-4 pb-6">
+                {siteConfig.nav.map((item) => (
+                  <SheetClose
+                    key={item.href}
+                    nativeButton={false}
+                    render={
+                      <Link
+                        href={item.href}
+                        className="rounded-lg px-3 py-2.5 text-base font-medium text-foreground transition-colors hover:bg-secondary"
+                      />
+                    }
+                  >
+                    {dict.nav[item.key][locale]}
+                  </SheetClose>
+                ))}
                 <SheetClose
-                  key={item.href}
                   nativeButton={false}
                   render={
                     <Link
-                      href={item.href}
-                      className="rounded-lg px-3 py-2.5 text-base font-medium text-foreground transition-colors hover:bg-secondary"
+                      href="/resume"
+                      className="mt-3 rounded-full bg-navy px-3 py-2.5 text-center text-base font-medium text-navy-foreground"
                     />
                   }
                 >
-                  {item.label}
+                  {dict.nav.downloadCv[locale]}
                 </SheetClose>
-              ))}
-              <SheetClose
-                nativeButton={false}
-                render={
-                  <Link
-                    href="/resume"
-                    className="mt-3 rounded-full bg-navy px-3 py-2.5 text-center text-base font-medium text-navy-foreground"
-                  />
-                }
-              >
-                Download CV
-              </SheetClose>
-            </div>
-          </SheetContent>
-        </Sheet>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
       </nav>
     </header>
   );

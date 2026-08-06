@@ -1,18 +1,25 @@
+"use client";
+
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowLeft } from "lucide-react";
 import { projects } from "@/data/projects";
+import { dict } from "@/data/dictionary";
+import { useLocale } from "@/components/providers/locale-provider";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { ProjectCard } from "@/components/shared/project-card";
 import { Reveal } from "@/components/shared/reveal";
 import { Button } from "@/components/ui/button";
 
 export function FeaturedProjects() {
+  const { locale, dir } = useLocale();
+  const ForwardArrow = dir === "rtl" ? ArrowLeft : ArrowRight;
+
   return (
     <section className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
       <Reveal>
         <SectionHeading
-          title="Selected Work"
-          subtitle="A selection of projects I've built across full-stack development and intelligent software."
+          title={dict.home.selectedWork[locale]}
+          subtitle={dict.home.selectedWorkSubtitle[locale]}
         />
       </Reveal>
 
@@ -26,8 +33,8 @@ export function FeaturedProjects() {
 
       <div className="mt-10 flex justify-center">
         <Button variant="outline" className="rounded-full" nativeButton={false} render={<Link href="/projects" />}>
-          View All Projects
-          <ArrowRight className="size-4" />
+          {dict.common.viewAllProjects[locale]}
+          <ForwardArrow className="size-4" />
         </Button>
       </div>
     </section>

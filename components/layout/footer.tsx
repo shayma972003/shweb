@@ -1,14 +1,20 @@
+"use client";
+
 import Link from "next/link";
-import { Mail, Code2, Contact2 } from "lucide-react";
+import { Mail, Phone, Contact2 } from "lucide-react";
 import { siteConfig } from "@/data/site-config";
+import { dict } from "@/data/dictionary";
+import { useLocale } from "@/components/providers/locale-provider";
 
 export function Footer() {
+  const { locale } = useLocale();
+
   return (
     <footer className="border-t border-border">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex flex-col gap-1.5">
-          <span className="text-base font-semibold text-foreground">{siteConfig.name}</span>
-          <span className="text-sm text-muted-foreground">{siteConfig.title}</span>
+          <span className="text-base font-semibold text-foreground">{siteConfig.name[locale]}</span>
+          <span className="text-sm text-muted-foreground">{siteConfig.title[locale]}</span>
         </div>
 
         <div className="flex flex-col gap-1.5 text-sm">
@@ -20,35 +26,41 @@ export function Footer() {
                 href={item.href}
                 className="text-muted-foreground transition-colors hover:text-foreground"
               >
-                {item.label}
+                {dict.nav[item.key][locale]}
               </Link>
             ))}
         </div>
 
-        <div className="flex items-center gap-3">
-          <Link
+        <div className="flex flex-col gap-2 text-sm">
+          <a
             href={`mailto:${siteConfig.email}`}
-            aria-label="Email Shayma Samir"
-            className="flex size-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
           >
-            <Mail className="size-4" />
-          </Link>
-          <span
-            aria-label="GitHub — coming soon"
-            className="flex size-9 items-center justify-center rounded-full border border-border text-muted-foreground/50"
+            <Mail className="size-4 shrink-0" />
+            <span dir="ltr">{siteConfig.email}</span>
+          </a>
+          <a
+            href={`tel:${siteConfig.phone}`}
+            className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
           >
-            <Code2 className="size-4" />
-          </span>
-          <span
-            aria-label="LinkedIn — coming soon"
-            className="flex size-9 items-center justify-center rounded-full border border-border text-muted-foreground/50"
-          >
-            <Contact2 className="size-4" />
-          </span>
+            <Phone className="size-4 shrink-0" />
+            <span dir="ltr">{siteConfig.phone}</span>
+          </a>
+          {siteConfig.social.linkedin && (
+            <a
+              href={siteConfig.social.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <Contact2 className="size-4 shrink-0" />
+              <span>{dict.footer.linkedin[locale]}</span>
+            </a>
+          )}
         </div>
       </div>
       <div className="border-t border-border py-5 text-center text-xs text-muted-foreground">
-        © 2026 {siteConfig.name}. All rights reserved.
+        © 2026 {siteConfig.name[locale]}. {dict.footer.rights[locale]}
       </div>
     </footer>
   );
