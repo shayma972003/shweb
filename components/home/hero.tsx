@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowLeft, User } from "lucide-react";
+import { ArrowRight, ArrowLeft } from "lucide-react";
+import homeHero from "@/public/home-hero.webp";
 import { siteConfig } from "@/data/site-config";
 import { dict } from "@/data/dictionary";
 import { useLocale } from "@/components/providers/locale-provider";
 import { Button } from "@/components/ui/button";
-import { ImagePlaceholder } from "@/components/shared/image-placeholder";
 
 export function Hero() {
   const { locale, dir } = useLocale();
@@ -59,11 +60,11 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
         >
-          <ImagePlaceholder
-            label={dict.home.profilePhotoComingSoon[locale]}
-            icon={User}
-            aspectRatio="aspect-square"
-            className="max-w-sm lg:ms-auto"
+          <Image
+            src={homeHero}
+            alt={`${siteConfig.name[locale]} — ${siteConfig.title[locale]}`}
+            className="h-auto w-full lg:ms-auto"
+            priority
           />
         </motion.div>
       </div>
