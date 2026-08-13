@@ -32,19 +32,31 @@ export function ContactContent() {
         <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
           {t.title[locale]}
         </h1>
-        <p className="max-w-md text-lg text-muted-foreground">{t.text[locale]}</p>
+        <p className="max-w-md text-lg text-muted-foreground">
+          {t.text[locale]}
+        </p>
         <span dir="ltr" className="text-lg font-medium text-indigo">
           {siteConfig.email}
         </span>
+        <span dir="ltr" className="text-lg font-medium text-indigo">
+          {siteConfig.phone}
+        </span>
       </Reveal>
 
-      <Reveal delay={0.1} className="mt-10 flex flex-wrap items-center justify-center gap-3">
+      <Reveal
+        delay={0.1}
+        className="mt-10 flex flex-wrap items-center justify-center gap-3"
+      >
         <Button
           size="lg"
           className="rounded-full bg-navy text-navy-foreground hover:bg-navy/90"
           onClick={() => emailCopy.copy(siteConfig.email)}
         >
-          {emailCopy.copied ? <Check className="size-4" /> : <Copy className="size-4" />}
+          {emailCopy.copied ? (
+            <Check className="size-4" />
+          ) : (
+            <Copy className="size-4" />
+          )}
           {emailCopy.copied ? t.emailCopied[locale] : t.copyEmail[locale]}
         </Button>
         <Button
@@ -53,7 +65,11 @@ export function ContactContent() {
           className="rounded-full"
           onClick={() => phoneCopy.copy(siteConfig.phone)}
         >
-          {phoneCopy.copied ? <Check className="size-4" /> : <Phone className="size-4" />}
+          {phoneCopy.copied ? (
+            <Check className="size-4" />
+          ) : (
+            <Phone className="size-4" />
+          )}
           {phoneCopy.copied ? t.phoneCopied[locale] : t.copyPhone[locale]}
         </Button>
         {siteConfig.social.linkedin && (
@@ -62,7 +78,13 @@ export function ContactContent() {
             variant="outline"
             className="rounded-full"
             nativeButton={false}
-            render={<a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" />}
+            render={
+              <a
+                href={siteConfig.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+              />
+            }
           >
             <Contact2 className="size-4" />
             {t.linkedin[locale]}

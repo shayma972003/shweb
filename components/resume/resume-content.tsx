@@ -27,34 +27,22 @@ export function ResumeContent() {
       <Reveal>
         <div className="flex flex-wrap items-start justify-between gap-6">
           <SectionHeading title={t.title[locale]} />
-          {siteConfig.cvAvailable ? (
-            <Button
-              size="lg"
-              className="rounded-full bg-navy text-navy-foreground hover:bg-navy/90"
-              nativeButton={false}
-              render={<a href={siteConfig.cvPath} download />}
-            >
-              <Download className="size-4" />
-              {t.downloadCv[locale]}
-            </Button>
-          ) : (
-            <Button disabled size="lg" variant="outline" className="rounded-full opacity-60">
-              <Download className="size-4" />
-              {t.cvAvailableSoon[locale]}
-            </Button>
-          )}
         </div>
       </Reveal>
 
       <Reveal delay={0.1} className="mt-10">
-        <h2 className="text-xl font-semibold text-foreground">{t.professionalSummary[locale]}</h2>
+        <h2 className="text-xl font-semibold text-foreground">
+          {t.professionalSummary[locale]}
+        </h2>
         <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted-foreground">
           {t.summaryText[locale]}
         </p>
       </Reveal>
 
       <Reveal delay={0.15} className="mt-12">
-        <h2 className="text-xl font-semibold text-foreground">{t.coreAreas[locale]}</h2>
+        <h2 className="text-xl font-semibold text-foreground">
+          {t.coreAreas[locale]}
+        </h2>
         <div className="mt-4">
           <SkillGroup areas={coreAreas[locale]} />
         </div>
@@ -66,13 +54,18 @@ export function ResumeContent() {
         </h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           {certifications.map((certification) => (
-            <CertificationCard key={certification.title.en} certification={certification} />
+            <CertificationCard
+              key={certification.title.en}
+              certification={certification}
+            />
           ))}
         </div>
       </Reveal>
 
       <Reveal delay={0.25} className="mt-12 max-w-sm">
-        <h2 className="text-xl font-semibold text-foreground">{t.languages[locale]}</h2>
+        <h2 className="text-xl font-semibold text-foreground">
+          {t.languages[locale]}
+        </h2>
         <div className="mt-4">
           <LanguageList languages={languages} />
         </div>

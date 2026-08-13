@@ -24,8 +24,12 @@ export function Hero() {
           className="flex flex-col gap-6"
         >
           <div className="flex flex-col gap-1">
-            <span className="text-lg font-semibold text-foreground">{siteConfig.name[locale]}</span>
-            <span className="text-sm font-medium text-muted-foreground">{siteConfig.title[locale]}</span>
+            <span className="text-lg font-semibold text-foreground">
+              {siteConfig.name[locale]}
+            </span>
+            <span className="text-sm font-medium text-muted-foreground">
+              {siteConfig.title[locale]}
+            </span>
           </div>
 
           <h1 className="whitespace-pre-line text-4xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
@@ -46,11 +50,14 @@ export function Hero() {
               {dict.home.viewProjects[locale]}
               <ForwardArrow className="size-4" />
             </Button>
-            <Button size="lg" variant="outline" className="rounded-full" nativeButton={false} render={<Link href="/ai-lab" />}>
+            <Button
+              size="lg"
+              variant="outline"
+              className="rounded-full"
+              nativeButton={false}
+              render={<Link href="/ai-lab" />}
+            >
               {dict.home.exploreAiLab[locale]}
-            </Button>
-            <Button size="lg" variant="ghost" className="rounded-full" nativeButton={false} render={<Link href="/resume" />}>
-              {dict.home.downloadResume[locale]}
             </Button>
           </div>
         </motion.div>
@@ -63,7 +70,7 @@ export function Hero() {
           <Image
             src={homeHero}
             alt={`${siteConfig.name[locale]} — ${siteConfig.title[locale]}`}
-            className="h-auto w-full lg:ms-auto"
+            className="h-auto w-full scale-130 lg:ms-auto"
             priority
           />
         </motion.div>

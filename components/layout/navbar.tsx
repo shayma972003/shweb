@@ -47,7 +47,7 @@ export function Navbar() {
                 aria-current={active ? "page" : undefined}
                 className={cn(
                   "text-sm font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm",
-                  active && "text-foreground"
+                  active && "text-foreground",
                 )}
               >
                 {dict.nav[item.key][locale]}
@@ -62,7 +62,7 @@ export function Navbar() {
             size="sm"
             className="rounded-full bg-navy text-navy-foreground hover:bg-navy/90"
             nativeButton={false}
-            render={<Link href="/resume" />}
+            render={<a href="/Shaima CV.pdf" download />}
           >
             {dict.nav.downloadCv[locale]}
           </Button>
