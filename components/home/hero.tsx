@@ -67,7 +67,7 @@ export function Hero() {
           <Image
             src={homeHero}
             alt={`${siteConfig.name[locale]} — ${siteConfig.title[locale]}`}
-            className="h-auto w-full scale-130 lg:ms-auto"
+            className="h-auto w-full lg:scale-130 lg:ms-auto"
             priority
           />
         </motion.div>
