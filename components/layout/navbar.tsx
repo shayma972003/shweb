@@ -101,14 +101,16 @@ export function Navbar() {
                     {dict.nav[item.key][locale]}
                   </SheetClose>
                 ))}
-                <SheetClose>
-                  <a
-                    href="/Shaima CV.pdf"
-                    download
-                    className="mt-3 rounded-full bg-navy px-3 py-2.5 text-center text-base font-medium text-navy-foreground block"
-                  >
-                    {dict.nav.downloadCv[locale]}
-                  </a>
+                <SheetClose
+                  nativeButton={false}
+                  render={
+                    <Link
+                      href="/resume"
+                      className="mt-3 rounded-full bg-navy px-3 py-2.5 text-center text-base font-medium text-navy-foreground"
+                    />
+                  }
+                >
+                  {dict.nav.downloadCv[locale]}
                 </SheetClose>
               </div>
             </SheetContent>
