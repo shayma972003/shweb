@@ -24,9 +24,6 @@ export function Hero() {
           className="flex flex-col gap-6"
         >
           <div className="flex flex-col gap-1">
-            <span className="text-lg font-semibold text-foreground">
-              {siteConfig.name[locale]}
-            </span>
             <span className="text-sm font-medium text-muted-foreground">
               {siteConfig.title[locale]}
             </span>
